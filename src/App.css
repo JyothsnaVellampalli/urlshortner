@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+*{
+    margin:0px;
+    background-color : black;
+    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.from-item{
+    padding-top: 5px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.form-container{
+    margin-left:40%;
+    /* background-color: bisque; */
+   color:white;
+    padding:10px;
+    width:max-content;
+    border : 2px solid white;
+    border-radius: 5px;
+}
+@media only screen and (max-width: 600px) {
+    .form-container{
+        margin-left: 10px;
+        margin-right: 5px;
+        width: fit-content;
+        border:0px;
+    }
   }
+.form-button{
+    margin-top:10px;
+    float:center;
+    background-color:rgb(238, 179, 29);
+    margin-bottom:10px;
+    border : 1px solid rgb(238, 179, 29);
+    
+}
+input{
+    width: 250px;
+}
+textarea{
+    width: 300px;
+}
+h3{
+    color: rgb(238, 179, 29);
+   
+}
+h2{
+    color: rgb(238, 179, 29);
+   
+
+    
+}
+.nav-bar{
+    display:flex;
+    flex-direction:column;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    justify-content:space-between;
+   
+}
+.container{
+    width: 100%;
+}
+.title{
+    padding-top:5px;
+    padding-left: 10px;
+}
+table{
+    border-collapse:collapse;
+    border : 2px solid  rgb(238, 179, 29)}
+   
+td,th{
+    border: solid rgb(238, 179, 29);
+    padding : 5px
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.grid-container{
+    display : grid;
+    grid-template-columns: 30% 70%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 600px) {
+    .grid-container{
+        display : block;
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+a:hover{
+    color: white;
+}
+button:hover{
+    border: solid rgb(238, 174, 12);
+
+}
+input{
+    color: white;
+    border : 1px solid gray;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+input:hover{
+    border: 2px solid rgb(102, 101, 101);
 }
