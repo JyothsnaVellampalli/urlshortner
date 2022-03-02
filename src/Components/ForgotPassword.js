@@ -18,6 +18,7 @@ function ForgotPassword() {
     {name,email,phone,newpassword});
      console.log({name,email,phone,newpassword});
     // console.log(res);
+    
     if(res.data.statuscode===200){setMessage('Password reset Successful. Verify to login')}
     else if(res.data.statuscode===400){setMessage('Invalid credentials')}
     else if(res.data.statuscode===404){setMessage('Email doesnot registered')}

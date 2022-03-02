@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -8,23 +8,43 @@ function Verification() {
     let[name,setName] = useState('');
     let [email,setEmail] = useState('');
     
-    let testurl = new URL(window.location.href);
-    let params = new URLSearchParams(testurl.search);
-    let id = params.get("id");
-    // console.log(token);
-
-    let handleSubmit= async() => {
+    
+    const urloriginal = async ()=>{
+        // let id = getparams();
+        const testurl = new URL(window.location.href);
+        let params = new URLSearchParams(testurl.search);
+        let id = params.get("id");
+        console.log(id);
         let res = await axios.get(`http://localhost:4000/users/verify?id=${id}`);
-
+        console.log(res.data)
+        setName(res.data.name);
+        setEmail(res.data.email);
+        if(res.data.statuscode===200){
+        let replace = await window.location.replace(`http://localhost:3000/verify?token=${res.data.token}`);}
+        else if(res.data.statuscode===404){
+            setVerified("URL not found");
+        }
+        let reponse= axios.post('http://localhost:4000/users/urls',{url:testurl});
+        }
+    
+    useEffect(()=>{
+        
+        urloriginal();
+        // console.log(token);
+    },[]);
+    
+    let handleSubmit= async() => {
+        // let id = getparams();
+        let testurl = new URL(window.location.href);
+        let params = new URLSearchParams(testurl.search);
+        let id = params.get("token");
+        let res = await axios.get(`http://localhost:4000/users/verifyuser?token=${id}`)
         if(res.data.statuscode===200){
             setVerified('Account verified');
         }
         if(res.data.statuscode===400){
             setVerified('Invalid Key')
         }
-
-        let reponse= await axios.post('http://localhost:4000/users/urls',{url:testurl})
-        console.log(reponse)
     }
    
     
@@ -36,13 +56,13 @@ function Verification() {
         <div className="from-item">
         <label htmlFor="name">Name</label>
         <br></br>
-        <input type='name' placeholder='Enter Name' onChange={(b)=>{setName(b.target.value)}}/>
+        <input type='name' placeholder='Enter Name' value={name} onChange={(b)=>{setName(b.target.value)}}/>
         </div>
 
          <div className="from-item">
         <label htmlFor="email">Email</label>
         <br></br>
-        <input type='email' placeholder='Enter Email' onChange={(b)=>{setEmail(b.target.value)}}/>
+        <input type='email' placeholder='Enter Email' value={email} onChange={(b)=>{setEmail(b.target.value)}}/>
         </div>
         
         

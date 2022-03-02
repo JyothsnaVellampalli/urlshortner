@@ -101,3 +101,6 @@ input{
 input:hover{
     border: 2px solid rgb(102, 101, 101);
 }
+button:active{
+    background-color:white;
+}
